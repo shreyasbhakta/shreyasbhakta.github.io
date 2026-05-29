@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreyas Bhakta — Backend Engineer</title>
+  <meta name="description" content="Backend Engineer specializing in Java, Spring Boot, Kafka, and distributed systems. Building scalable fintech and payment infrastructure at production scale." />
+  <meta name="author" content="Shreyas Bhakta" />
+  <meta property="og:title" content="Shreyas Bhakta — Backend Engineer" />
+  <meta property="og:description" content="3+ years building high-performance APIs, event-driven architectures, and payment infrastructure." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============================================================
+  NAVBAR
+============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Shreyas<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:shreyasbhakta@gmail.com" class="nav-hire">Hire Me</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about"      class="mobile-link">About</a></li>
+    <li><a href="#skills"     class="mobile-link">Skills</a></li>
+    <li><a href="#experience" class="mobile-link">Experience</a></li>
+    <li><a href="#projects"   class="mobile-link">Projects</a></li>
+    <li><a href="#education"  class="mobile-link">Education</a></li>
+    <li><a href="#contact"    class="mobile-link">Contact</a></li>
+  </ul>
+</div>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- ============================================================
+  HERO
+============================================================ -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <div class="hero-spot"></div>
+    <div class="hero-spot-2"></div>
+    <div class="hero-line"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      Masters of Engineering Graduate · New York City · Open to Relocate 
+    </div>
+
+    <h1 class="hero-name">
+      Shreyas<br>
+      <span class="surname">Bhakta</span>
+    </h1>
+
+    <div class="hero-role-strip">
+      <span class="hero-role-text">Backend Engineer</span>
+      <span class="pipe">/</span>
+      <span class="typewriter" id="typewriter"></span>
+    </div>
+
+    <p class="hero-summary">
+      Backend engineer with 3+ years building scalable distributed systems across fintech &amp; mobility.
+      Recent MEng graduate from Stevens Institute of Technology, ready to contribute to
+      high-performance backend, cloud-native, or AI-integrated teams.
+    </p>
+
+    <div class="hero-cta">
+      <a href="https://github.com/shreyasbhakta" target="_blank" rel="noopener" class="btn btn-red">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/shreyasbhakta/" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:shreyasbhakta@gmail.com" class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  ABOUT
+============================================================ -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <div class="about-layout">
+
+      <!-- Left: photo + label -->
+      <div class="reveal-left">
+        <div class="about-label">About Me</div>
+        <div class="about-photo-wrap">
+          <div class="about-photo-placeholder" id="photoPlaceholder">
+            <img src="assets/profile.jpg" alt="Shreyas Bhakta" />
+            <div class="photo-corner"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: editorial text -->
+      <div class="reveal-right">
+        <h2 class="about-headline">
+          Engineer who builds systems<br>that <em>actually scale.</em>
+        </h2>
+
+        <div class="about-body">
+          <p>
+            Backend engineer with <strong>3+ years</strong> designing distributed systems for
+            fintech and mobility. I specialize in high-performance APIs, event-driven
+            architectures, and payment infrastructure that operates reliably at production scale.
+          </p>
+          <p>
+            At <strong>Vymo</strong>, I led a 5-engineer team to deliver collections and
+            settlement systems for HDFC Bank — cutting latency by <strong>40%</strong> and
+            unlocking <strong>90% of planned payment capabilities</strong>. At <strong>SIXT R&amp;D</strong>,
+            I built Kafka-driven microservices supporting 6,000+ daily checkouts and drove
+            test coverage to 80%.
+          </p>
+          <p>
+            Recent <strong>Master of Engineering graduate</strong> from Stevens Institute of Technology,
+            with coursework in system design, product strategy, and engineering leadership.
+            Actively seeking SDE / SDE-2 roles in backend, cloud-native, or AI-integrated
+            systems — open to relocate.
+          </p>
+        </div>
+
+        <div class="certs-list">
+          <span class="cert">Penetration Testing &amp; IR</span>
+          <span class="cert">Cyber Security Essentials</span>
+          <span class="cert">MITRE ATT&amp;CK</span>
+          <span class="cert">Agile Coach</span>
+          <span class="cert">Responsive Web Dev</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  SKILLS
+============================================================ -->
+<section id="skills" class="section">
+
+  <!-- Marquee ticker -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- Set 1 -->
+      <span class="marquee-item"><i class="devicon-java-plain colored"></i> Java</span>
+      <span class="marquee-item"><i class="devicon-spring-plain colored"></i> Spring Boot</span>
+      <span class="marquee-item"><i class="devicon-python-plain colored"></i> Python</span>
+      <span class="marquee-item"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+      <span class="marquee-item"><i class="devicon-kafka-plain"></i> Apache Kafka</span>
+      <span class="marquee-item"><i class="devicon-docker-plain colored"></i> Docker</span>
+      <span class="marquee-item"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
+      <span class="marquee-item"><i class="devicon-amazonwebservices-plain colored"></i> AWS</span>
+      <span class="marquee-item"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+      <span class="marquee-item"><i class="devicon-redis-plain colored"></i> Redis</span>
+      <span class="marquee-item"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+      <span class="marquee-item"><i class="devicon-react-original colored"></i> React</span>
+      <span class="marquee-item"><i class="devicon-kotlin-plain colored"></i> Kotlin</span>
+      <span class="marquee-item"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+      <span class="marquee-item"><i class="devicon-git-plain colored"></i> Git</span>
+      <span class="marquee-item"><i class="devicon-firebase-plain colored"></i> Firebase</span>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <span class="marquee-item"><i class="devicon-java-plain colored"></i> Java</span>
+      <span class="marquee-item"><i class="devicon-spring-plain colored"></i> Spring Boot</span>
+      <span class="marquee-item"><i class="devicon-python-plain colored"></i> Python</span>
+      <span class="marquee-item"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+      <span class="marquee-item"><i class="devicon-kafka-plain"></i> Apache Kafka</span>
+      <span class="marquee-item"><i class="devicon-docker-plain colored"></i> Docker</span>
+      <span class="marquee-item"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
+      <span class="marquee-item"><i class="devicon-amazonwebservices-plain colored"></i> AWS</span>
+      <span class="marquee-item"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+      <span class="marquee-item"><i class="devicon-redis-plain colored"></i> Redis</span>
+      <span class="marquee-item"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+      <span class="marquee-item"><i class="devicon-react-original colored"></i> React</span>
+      <span class="marquee-item"><i class="devicon-kotlin-plain colored"></i> Kotlin</span>
+      <span class="marquee-item"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+      <span class="marquee-item"><i class="devicon-git-plain colored"></i> Git</span>
+      <span class="marquee-item"><i class="devicon-firebase-plain colored"></i> Firebase</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="skills-editorial">
+
+      <!-- Left: category nav -->
+      <div class="skill-nav" id="skillNav">
+        <span class="skill-nav-item active" data-target="lang">Languages</span>
+        <span class="skill-nav-item" data-target="backend">Backend</span>
+        <span class="skill-nav-item" data-target="cloud">Cloud &amp; DevOps</span>
+        <span class="skill-nav-item" data-target="db">Databases</span>
+        <span class="skill-nav-item" data-target="ai">AI / GenAI</span>
+        <span class="skill-nav-item" data-target="sec">Security &amp; QA</span>
+      </div>
+
+      <!-- Right: skill panels -->
+      <div class="skills-panels">
+
+        <div class="skill-panel reveal" id="panel-lang">
+          <div class="skill-panel-title">// Languages</div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-java-plain colored"></i> Java</span>
+            <span class="skill-pill"><i class="devicon-python-plain colored"></i> Python</span>
+            <span class="skill-pill"><i class="devicon-javascript-plain colored"></i> JavaScript (ES6+)</span>
+            <span class="skill-pill"><i class="devicon-kotlin-plain colored"></i> Kotlin</span>
+            <span class="skill-pill"><i class="devicon-cplusplus-plain colored"></i> C++</span>
+            <span class="skill-pill"><i class="devicon-mysql-plain colored"></i> SQL</span>
+            <span class="skill-pill"><i class="devicon-bash-plain"></i> Bash</span>
+            <span class="skill-pill">HTML5 / CSS3</span>
+          </div>
+        </div>
+
+        <div class="skill-panel reveal d1" id="panel-backend">
+          <div class="skill-panel-title">// Backend &amp; APIs</div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-spring-plain colored"></i> Spring Boot</span>
+            <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="skill-pill"><i class="devicon-express-original"></i> Express.js</span>
+            <span class="skill-pill">RESTful API Design</span>
+            <span class="skill-pill">Microservices</span>
+            <span class="skill-pill">Apache Kafka</span>
+            <span class="skill-pill">Event-Driven Systems</span>
+            <span class="skill-pill">gRPC</span>
+            <span class="skill-pill">GraphQL</span>
+            <span class="skill-pill">JWT / OAuth 2.0</span>
+          </div>
+        </div>
+
+        <div class="skill-panel reveal d2" id="panel-cloud">
+          <div class="skill-panel-title">// Cloud &amp; DevOps</div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-amazonwebservices-plain colored"></i> AWS (EC2, S3, Lambda)</span>
+            <span class="skill-pill"><i class="devicon-googlecloud-plain colored"></i> GCP</span>
+            <span class="skill-pill"><i class="devicon-docker-plain colored"></i> Docker</span>
+            <span class="skill-pill"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
+            <span class="skill-pill"><i class="devicon-jenkins-plain colored"></i> Jenkins</span>
+            <span class="skill-pill">CI/CD Pipelines</span>
+            <span class="skill-pill">Prometheus</span>
+            <span class="skill-pill">Grafana</span>
+            <span class="skill-pill">SonarQube</span>
+          </div>
+        </div>
+
+        <div class="skill-panel reveal d3" id="panel-db">
+          <div class="skill-panel-title">// Databases &amp; Messaging</div>
+          <div class="skill-pills">
+            <span class="skill-pill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+            <span class="skill-pill"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="skill-pill"><i class="devicon-redis-plain colored"></i> Redis</span>
+            <span class="skill-pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+            <span class="skill-pill"><i class="devicon-firebase-plain colored"></i> Firebase</span>
+            <span class="skill-pill">ScyllaDB</span>
+            <span class="skill-pill">RabbitMQ</span>
+            <span class="skill-pill">ETL Pipelines</span>
+          </div>
+        </div>
+
+        <div class="skill-panel reveal d4" id="panel-ai">
+          <div class="skill-panel-title">// AI &amp; GenAI</div>
+          <div class="skill-pills">
+            <span class="skill-pill">LangChain</span>
+            <span class="skill-pill">LlamaIndex</span>
+            <span class="skill-pill">RAG Pipelines</span>
+            <span class="skill-pill">Pinecone</span>
+            <span class="skill-pill">FAISS</span>
+            <span class="skill-pill">OpenAI API</span>
+            <span class="skill-pill">Hugging Face</span>
+            <span class="skill-pill">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <div class="skill-panel reveal d5" id="panel-sec">
+          <div class="skill-panel-title">// Security &amp; QA</div>
+          <div class="skill-pills">
+            <span class="skill-pill">JUnit / Jest</span>
+            <span class="skill-pill">Mockito</span>
+            <span class="skill-pill">TDD (80%+ Coverage)</span>
+            <span class="skill-pill">OWASP Guidelines</span>
+            <span class="skill-pill">DevSecOps</span>
+            <span class="skill-pill">Metasploit</span>
+            <span class="skill-pill">Wireshark</span>
+            <span class="skill-pill">SAST / DAST</span>
+            <span class="skill-pill">SSL / TLS</span>
+            <span class="skill-pill">Postman / Swagger</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  EXPERIENCE
+============================================================ -->
+<section id="experience" class="section section-alt">
+  <div class="container">
+    <div style="margin-bottom: 56px;" class="reveal">
+      <p class="eyebrow">Career</p>
+      <h2 class="display">Work<br>Experience</h2>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-tl-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-meta">
+              <span class="exp-company">Vymo — Fintech SaaS, Series C</span>
+              <span class="exp-period">Sep 2023 → Jan 2025</span>
+            </div>
+            <h3 class="exp-role">Member of Technical Staff</h3>
+            <div class="exp-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">Microservices</span>
+              <span class="tag">HDFC Bank</span>
+              <span class="tag">Prometheus</span>
+              <span class="tag">Agile</span>
+            </div>
+            <div class="exp-toggle-btn" aria-label="Expand details">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="exp-details">
+            <ul class="exp-points">
+              <li>Reduced end-to-end API latency by <strong>40%</strong> by profiling and eliminating redundant inter-module calls, applying request-level caching and DB query optimization across the Java/Spring Boot microservices stack.</li>
+              <li>Unlocked <strong>90% of collection features</strong> for HDFC Bank by architecting and integrating a payment aggregator module, enabling real-time payment processing and reconciliation at scale.</li>
+              <li>Led a <strong>cross-functional team of 5 engineers</strong> to design and deliver a settlement module in close collaboration with HDFC Bank stakeholders — delivered on schedule using Agile/Scrum.</li>
+              <li>Improved system observability with Prometheus-based monitoring, reducing mean time to detect (MTTD) production incidents by <strong>30%</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal d1">
+        <div class="exp-tl-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-meta">
+              <span class="exp-company">SIXT R&amp;D — Global Mobility / Car Rental Tech</span>
+              <span class="exp-period">Mar 2022 → Jul 2023</span>
+            </div>
+            <h3 class="exp-role">Software Development Engineer</h3>
+            <div class="exp-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Kafka</span>
+              <span class="tag">Redis</span>
+              <span class="tag">JUnit</span>
+              <span class="tag">SonarQube</span>
+              <span class="tag">REST APIs</span>
+            </div>
+            <div class="exp-toggle-btn" aria-label="Expand details">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="exp-details">
+            <ul class="exp-points">
+              <li>Boosted Digital Checkout Service adaptability from <strong>2% to 6%</strong>, enabling <strong>6,000+ daily checkouts</strong>, by developing RESTful APIs with dynamic configuration in a microservices architecture.</li>
+              <li>Cut API response time to under <strong>300 ms</strong> by implementing request-level caching with Redis, reducing downstream service load significantly.</li>
+              <li>Reduced service-level latency by <strong>30–40%</strong> by implementing Apache Kafka funnels for asynchronous tracking and configurable validation chaining.</li>
+              <li>Raised unit and integration test coverage to <strong>80%</strong> using JUnit and Mockito; integrated SonarQube for continuous code quality enforcement.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal d2">
+        <div class="exp-tl-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-meta">
+              <span class="exp-company">Brane Enterprises — Enterprise Technology Solutions</span>
+              <span class="exp-period">Jul 2021 → Dec 2021</span>
+            </div>
+            <h3 class="exp-role">Platform Security &amp; Development Engineer</h3>
+            <div class="exp-tags">
+              <span class="tag">Penetration Testing</span>
+              <span class="tag">Metasploit</span>
+              <span class="tag">OWASP</span>
+              <span class="tag">DevSecOps</span>
+              <span class="tag">CI/CD</span>
+            </div>
+            <div class="exp-toggle-btn" aria-label="Expand details">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="exp-details">
+            <ul class="exp-points">
+              <li>Identified <strong>11 security vulnerabilities</strong> through manual penetration testing and automated scanning (Metasploit, Wireshark), reducing platform attack surface by <strong>50–60%</strong>.</li>
+              <li>Implemented DevSecOps practices including automated SAST/DAST scans in the CI/CD pipeline, integrating OWASP guidelines into the SDLC.</li>
+              <li>Delivered a comprehensive security assessment report with remediation recommendations adopted by the engineering leadership team.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal d3">
+        <div class="exp-tl-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-meta">
+              <span class="exp-company">JSW Pvt Ltd &amp; Schaffen Softwares</span>
+              <span class="exp-period">Aug 2020 → May 2021</span>
+            </div>
+            <h3 class="exp-role">Android App Developer</h3>
+            <div class="exp-tags">
+              <span class="tag">Kotlin</span>
+              <span class="tag">Android</span>
+              <span class="tag">Firebase</span>
+            </div>
+            <div class="exp-toggle-btn" aria-label="Expand details">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div class="exp-details">
+            <ul class="exp-points">
+              <li>Developed a Kotlin-based internal Android application for JSW employee service access, achieving a <strong>70% reduction in access latency</strong> over the legacy system.</li>
+              <li>Built a Kotlin utility app at Schaffen Softwares with QR code generation, scanning, and text translation; promoted within 3 months for delivery quality.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  PROJECTS — 3-CARD CAROUSEL
+============================================================ -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="projects-header reveal">
+      <div>
+        <p class="eyebrow">Work</p>
+        <h2 class="display-sm">Featured Projects</h2>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carouselPrev" aria-label="Previous project">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="carousel-counter" id="carouselCounter">01 / 06</span>
+        <button class="carousel-btn" id="carouselNext" aria-label="Next project">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-stage" id="projectsCarousel">
+
+    <div class="proj-card" data-url="https://github.com/shreyasbhakta/mindmesh">
+      <div class="proj-card-top">
+        <div class="proj-number">01 / 06</div>
+        <span class="proj-emoji">🧠</span>
+        <h3 class="proj-title">MindMesh</h3>
+        <p class="proj-desc">Cross-platform wellness platform integrating mood, sleep, exercise, and focus tracking with a rule-based scoring engine and gamification.</p>
+        <ul class="proj-highlights">
+          <li>Flutter / Node.js — offline-first sync with Firebase</li>
+          <li>JWT auth, Redis session caching, Swagger docs</li>
+          <li>Horizontally scalable MongoDB with indexed queries</li>
+          <li>XP, streaks &amp; badge gamification for retention</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Firebase</span>
+        </div>
+      </div>
+      <div class="proj-card-foot">
+        <span class="proj-link">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-url="https://github.com/shreyasbhakta/SkyChoice">
+      <div class="proj-card-top">
+        <div class="proj-number">02 / 06</div>
+        <span class="proj-emoji">✈️</span>
+        <h3 class="proj-title">SkyChoice</h3>
+        <p class="proj-desc">Flight search and comparison platform aggregating real-time fares with smart filtering, price trends, and fare alerts.</p>
+        <ul class="proj-highlights">
+          <li>Real-time flight data aggregation and filtering</li>
+          <li>Price trend analysis and smart fare alerts</li>
+          <li>Responsive UI with dynamic search and sort</li>
+          <li>RESTful backend with Redis caching for fast results</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">Redis</span><span class="tag">REST API</span>
+        </div>
+      </div>
+      <div class="proj-card-foot">
+        <span class="proj-link">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-url="https://github.com/shreyasbhakta/ducktor">
+      <div class="proj-card-top">
+        <div class="proj-number">03 / 06</div>
+        <span class="proj-emoji">🩺</span>
+        <h3 class="proj-title">Ducktor</h3>
+        <p class="proj-desc">AI-powered medical assistant — NLP-driven symptom analysis, condition triage, and curated healthcare resource matching.</p>
+        <ul class="proj-highlights">
+          <li>NLP-driven symptom analysis and triage flow</li>
+          <li>Curated medical knowledge base with confidence scoring</li>
+          <li>Conversational UI for intuitive patient interaction</li>
+          <li>Secure data handling with HIPAA-aware design</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">React</span>
+        </div>
+      </div>
+      <div class="proj-card-foot">
+        <span class="proj-link">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-url="https://github.com/shreyasbhakta/medical_record">
+      <div class="proj-card-top">
+        <div class="proj-number">04 / 06</div>
+        <span class="proj-emoji">🏥</span>
+        <h3 class="proj-title">Medi-Assist</h3>
+        <p class="proj-desc">Full-stack medical record manager with appointment scheduling, document scanning, and secure GCP-backed health data storage.</p>
+        <ul class="proj-highlights">
+          <li>MERN stack — MongoDB, Express, React, Node.js</li>
+          <li>GCP Cloud Storage with access-controlled upload/retrieval</li>
+          <li>Role-based authorization for secure medical data access</li>
+          <li>Calendar-integrated appointment scheduling</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">GCP</span>
+        </div>
+      </div>
+      <div class="proj-card-foot">
+        <span class="proj-link">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-url="https://github.com/shreyasbhakta/Diginotice">
+      <div class="proj-card-top">
+        <div class="proj-number">05 / 06</div>
+        <span class="proj-emoji">📋</span>
+        <h3 class="proj-title">Diginotice</h3>
+        <p class="proj-desc">Digital notice board for institutions — multi-role access, real-time push, expiry-based archiving, and PWA offline support.</p>
+        <ul class="proj-highlights">
+          <li>Multi-role access: admin, staff, and student views</li>
+          <li>Real-time notice push with category filtering</li>
+          <li>Expiry-based auto-archiving and search</li>
+          <li>Responsive PWA with offline notice caching</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">React</span><span class="tag">PWA</span>
+        </div>
+      </div>
+      <div class="proj-card-foot">
+        <span class="proj-link">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-url="https://github.com/shreyasbhakta/RailwayRouteOptimisation">
+      <div class="proj-card-top">
+        <div class="proj-number">06 / 06</div>
+        <span class="proj-emoji">🚂</span>
+        <h3 class="proj-title">Railway Route Optimizer</h3>
+        <p class="proj-desc">Flutter app using Dijkstra's algorithm for shortest-path routing between railway stations with interactive map rendering.</p>
+        <ul class="proj-highlights">
+          <li>Dijkstra's algorithm for optimal multi-hop routing</li>
+          <li>Interactive map rendering of optimized paths</li>
+          <li>Custom graph data structure for station traversal</li>
+          <li>Real-time path recalculation on station change</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">DSA</span><span class="tag">Algorithms</span>
+        </div>
+      </div>
+      <div class="proj-card-foot">
+        <span class="proj-link">View on GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+  EDUCATION
+============================================================ -->
+<section id="education" class="section section-alt">
+  <div class="container">
+    <div style="margin-bottom: 56px;" class="reveal">
+      <p class="eyebrow">Academic</p>
+      <h2 class="display-sm">Education</h2>
+    </div>
+
+    <div class="edu-list">
+
+      <div class="edu-item reveal" data-bg="assets/sit.jpeg">
+        <div class="edu-bg-overlay"></div>
+        <div class="edu-body">
+          <p class="edu-degree">Master of Engineering</p>
+          <h3 class="edu-school">Stevens Institute of Technology</h3>
+          <p class="edu-detail">Engineering Management · Hoboken, NJ, USA<br>
+          <strong>Coursework:</strong> System Design, Product Management, Engineering Economics, Agile Project Leadership, Decision Analysis</p>
+        </div>
+        <div class="edu-period-block">
+          <div class="edu-years">2025<br>—26</div>
+          <p class="edu-location">Graduated May 2026</p>
+        </div>
+      </div>
+
+      <div class="edu-item reveal d1" data-bg="assets/dsce.jpeg">
+        <div class="edu-bg-overlay"></div>
+        <div class="edu-body">
+          <p class="edu-degree">Bachelor of Engineering</p>
+          <h3 class="edu-school">Dayananda Sagar College of Engineering</h3>
+          <p class="edu-detail">Information Science &amp; Engineering · Bengaluru, India<br>
+          <strong>Coursework:</strong> Data Structures &amp; Algorithms, DBMS, Operating Systems, Computer Networks, Machine Learning, Software Engineering</p>
+        </div>
+        <div class="edu-period-block">
+          <div class="edu-years">2018<br>—22</div>
+          <p class="edu-location">Graduated Jun 2022</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  CONTACT
+============================================================ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <div class="contact-left">
+        <p class="contact-label">Get In Touch</p>
+        <h2 class="contact-heading">Let's Build<br><span class="grad">Together.</span></h2>
+        <p class="contact-sub">
+          Recent MEng graduate, ready to join a team immediately. Open to SDE / SDE-2 roles
+          in backend, cloud-native, or AI-integrated systems — open to relocate.
+        </p>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:shreyasbhakta@gmail.com" class="btn btn-red">Send Email</a>
+        <a href="https://www.linkedin.com/in/shreyasbhakta/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/shreyasbhakta" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        <p class="contact-email-big"><a href="mailto:shreyasbhakta@gmail.com">shreyasbhakta@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="contact-bg-text" aria-hidden="true">CONNECT</div>
+</section>
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-left">© <span id="year"></span> Shreyas Bhakta</p>
+    <div class="footer-links">
+      <a href="https://github.com/shreyasbhakta" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/shreyasbhakta/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:shreyasbhakta@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
