@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+5%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+5%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles" alt="Typing SVG" />
+  <a href="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+5%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles;I+Build+the+Backend+%C2%B7+Then+I+Teach+It+to+Think;Engineered+for+Scale+%C2%B7+Wired+for+Intelligence">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+5%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles;I+Build+the+Backend+%C2%B7+Then+I+Teach+It+to+Think;Engineered+for+Scale+%C2%B7+Wired+for+Intelligence" alt="Typing SVG" />
   </a>
 </p>
 
