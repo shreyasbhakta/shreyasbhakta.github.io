@@ -73,7 +73,7 @@ document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click
    TYPEWRITER
 ============================================================ */
 const twEl    = document.getElementById('typewriter');
-const twWords = ['Java & Spring Boot', 'Distributed Systems', 'Kafka & Microservices', 'Fintech Engineer', 'Cloud-Native Systems'];
+const twWords = ['I Build the Backend · Then I Teach It to Think', 'Engineered for Scale · Wired for Intelligence'];
 let twIdx = 0, twChar = 0, twDel = false, twDelay = 130;
 
 function typeStep() {

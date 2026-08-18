@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=E8302C&height=200&section=header&text=Shreyas%20Bhakta&fontSize=60&fontColor=F2F2F0&fontAlignY=38&desc=Backend%20Engineer%20%7C%20Distributed%20Systems%20%7C%20Fintech&descAlignY=58&descSize=18&descColor=AAAAAA" alt="header" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=E8302C&height=200&section=header&text=Shreyas%20Bhakta&fontSize=60&fontColor=F2F2F0&fontAlignY=38&desc=Software%20Engineer%20%7C%20Distributed%20Systems%20%7C%20Fintech&descAlignY=58&descSize=18&descColor=AAAAAA" alt="header" width="100%" />
 </p>
 
 <p align="center">
-  <a href="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+3%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+3%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles" alt="Typing SVG" />
+  <a href="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+5%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&duration=3500&pause=800&color=E8302C&center=true&vCenter=true&multiline=false&width=600&lines=Java+%26+Spring+Boot+%7C+5%2B+Years;Distributed+Systems+%26+Apache+Kafka;Cloud-Native+%26+Kubernetes;Fintech+%7C+Payment+Infrastructure;Open+to+SDE+%2F+SDE-2+Roles" alt="Typing SVG" />
   </a>
 </p>
 
@@ -24,8 +24,8 @@
 
 ```bash
 > name        : Shreyas Kumar Bhakta
-> role        : Backend / Full-Stack Software Engineer
-> experience  : 3+ years  →  Fintech (Vymo) · Mobility (SIXT R&D) · Security (Brane)
+> role        : Full-Stack Software Engineer
+> experience  : 5+ years  →  Fintech (Vymo) · Mobility (SIXT R&D) · Security (Brane)
 > education   : MEng Engineering Management — Stevens Institute of Technology (May 2026)
 >               BE Information Science — Dayananda Sagar College of Engineering (2022)
 > location    : Jersey City / Hoboken, NJ · Open to relocate anywhere in the US
