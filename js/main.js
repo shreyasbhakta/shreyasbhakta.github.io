@@ -74,22 +74,22 @@ document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click
 ============================================================ */
 const twEl    = document.getElementById('typewriter');
 const twWords = ['I Build the Backend · Then I Teach It to Think', 'Engineered for Scale · Wired for Intelligence'];
-let twIdx = 0, twChar = 0, twDel = false, twDelay = 130;
+let twIdx = 0, twChar = 0, twDel = false, twDelay = 45;
 
 function typeStep() {
   const word = twWords[twIdx];
   if (twDel) {
     twEl.textContent = word.slice(0, --twChar);
-    twDelay = 55;
-    if (twChar === 0) { twDel = false; twIdx = (twIdx + 1) % twWords.length; twDelay = 360; }
+    twDelay = 18;
+    if (twChar === 0) { twDel = false; twIdx = (twIdx + 1) % twWords.length; twDelay = 200; }
   } else {
     twEl.textContent = word.slice(0, ++twChar);
-    twDelay = 130;
-    if (twChar === word.length) { twDel = true; twDelay = 2400; }
+    twDelay = 45;
+    if (twChar === word.length) { twDel = true; twDelay = 1400; }
   }
   setTimeout(typeStep, twDelay);
 }
-setTimeout(typeStep, 1800);
+setTimeout(typeStep, 800);
 
 /* ============================================================
    SCROLL REVEAL
