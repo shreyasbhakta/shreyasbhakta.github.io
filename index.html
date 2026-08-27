@@ -36,12 +36,35 @@
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="mailto:shreyasbhakta@gmail.com" class="nav-hire">Hire Me</a>
+    <div class="nav-resume-wrap">
+      <button type="button" class="nav-hire" id="resumeDownloadBtn">Grab My Resume ↓</button>
+      <span class="resume-counter" id="resumeCounter" aria-live="polite"></span>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<!-- ============================================================
+  RESUME DOWNLOAD MODAL
+============================================================ -->
+<div class="resume-modal-overlay" id="resumeModalOverlay"></div>
+<div class="resume-modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+  <button type="button" class="resume-modal-close" id="resumeModalClose" aria-label="Close">&times;</button>
+  <div class="resume-modal-icon">↓</div>
+  <h3 id="resumeModalTitle">Before you go...</h3>
+  <p class="resume-modal-copy">
+    Every connection starts with a bit of sharing. You share your email, I'll share my resume —
+    here's hoping it's the start of something great.
+  </p>
+  <form id="resumeModalForm">
+    <input type="email" id="resumeEmail" name="email" placeholder="you@company.com" required autocomplete="email" />
+    <input type="text" name="_gotcha" class="resume-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <button type="submit" class="btn btn-red" id="resumeSubmitBtn">Send Resume My Way</button>
+  </form>
+  <p class="resume-modal-note" id="resumeModalNote"></p>
+</div>
 
 <div class="mobile-menu" id="mobileMenu">
   <ul>

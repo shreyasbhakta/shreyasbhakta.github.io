@@ -213,9 +213,129 @@ ul { list-style: none; }
   border: 1px solid var(--red);
   padding: 7px 16px;
   border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 .nav-hire:hover { background: var(--red); color: #fff; }
+
+/* Resume download */
+.nav-resume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.resume-counter {
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.resume-counter:empty { display: none; }
+
+.resume-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 1998;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.resume-modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.resume-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) translateY(12px);
+  width: min(420px, calc(100vw - 32px));
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px 28px;
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+.resume-modal.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) translateY(0);
+}
+.resume-modal-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.resume-modal-close:hover { color: var(--white); }
+.resume-modal-icon {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--red-dim);
+  color: var(--red);
+  font-family: var(--mono);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.resume-modal h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.resume-modal-copy {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--grey);
+  margin-bottom: 20px;
+}
+#resumeModalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#resumeEmail {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 0.88rem;
+}
+#resumeEmail:focus {
+  outline: none;
+  border-color: var(--red);
+}
+#resumeModalForm .btn { width: 100%; justify-content: center; }
+#resumeModalForm .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.resume-modal-note {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  min-height: 1em;
+}
+.resume-modal-note.error { color: var(--red); }
+.resume-modal-note.warn  { color: #E8A32C; }
+
+.resume-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* Hamburger */
 .hamburger {
@@ -1418,7 +1538,7 @@ footer {
 
 @media (max-width: 768px) {
   :root { --nav-h: 60px; }
-  .nav-links, .nav-hire { display: none; }
+  .nav-links, .nav-resume-wrap { display: none; }
   .hamburger { display: flex; }
 
   .about-layout { grid-template-columns: 1fr; }

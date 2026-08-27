@@ -1,4 +1,181 @@
 /* ============================================================
+   RESUME DOWNLOAD
+============================================================ */
+const RESUME_PRIMARY  = 'resume/Shreyas_Bhakta_Resume.pdf';
+const RESUME_FALLBACK = 'resume/Shreyas_Bhakta_SE.pdf';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mljernqb';
+// Public, no-auth hit counter (abacus.jasoncameron.dev) — safe to call from client-side code,
+// unlike CounterAPI v2 which now requires a bearer key that a public page can't hide.
+const COUNTER_NAMESPACE  = 'shreyasbhakta-dev';
+const COUNTER_KEY        = 'resume-downloads';
+const COUNTER_BASE       = 55;
+
+const EMAIL_FORMAT_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+const DISPOSABLE_EMAIL_DOMAINS = new Set([
+  'mailinator.com', 'guerrillamail.com', '10minutemail.com', 'tempmail.com', 'temp-mail.org',
+  'yopmail.com', 'trashmail.com', 'fakeinbox.com', 'dispostable.com', 'sharklasers.com',
+  'getnada.com', 'maildrop.cc', 'throwawaymail.com', 'mintemail.com', 'mytemp.email',
+  'moakt.com', 'emailondeck.com', 'discard.email', 'spamgourmet.com', 'mailnesia.com',
+  'tempinbox.com', 'burnermail.io', '33mail.com', 'anonbox.net', 'mailcatch.com',
+  'mailsac.com', 'inboxkitten.com', 'tempr.email', '20minutemail.com', 'harakirimail.com'
+]);
+
+const EMAIL_TYPO_DOMAINS = {
+  'gmial.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gmai.com': 'gmail.com',
+  'gnail.com': 'gmail.com', 'gmaill.com': 'gmail.com', 'gmailc.om': 'gmail.com',
+  'yaho.com': 'yahoo.com', 'yahooo.com': 'yahoo.com', 'yahho.com': 'yahoo.com',
+  'hotmial.com': 'hotmail.com', 'hotnail.com': 'hotmail.com', 'hotmal.com': 'hotmail.com',
+  'outlok.com': 'outlook.com', 'outllok.com': 'outlook.com', 'outlook.con': 'outlook.com'
+};
+
+// Client-side checks only — a static site can't verify mailbox deliverability
+// without a backend to hold a verification-service API key out of public view.
+function validateResumeEmail(raw) {
+  const email = (raw || '').trim().toLowerCase();
+  if (!EMAIL_FORMAT_RE.test(email)) {
+    return { ok: false, level: 'error', message: "That doesn't look like a valid email — check the format and try again." };
+  }
+  const domain = email.split('@')[1];
+  if (DISPOSABLE_EMAIL_DOMAINS.has(domain)) {
+    return { ok: false, level: 'error', message: 'Please use a permanent email address, not a temporary/disposable one.' };
+  }
+  if (EMAIL_TYPO_DOMAINS[domain]) {
+    const corrected = `${email.split('@')[0]}@${EMAIL_TYPO_DOMAINS[domain]}`;
+    return { ok: true, email, flagged: true, message: `Heads up — did you mean ${corrected}? Sent anyway; flagged for review.` };
+  }
+  return { ok: true, email };
+}
+
+const resumeBtn       = document.getElementById('resumeDownloadBtn');
+const resumeCounterEl = document.getElementById('resumeCounter');
+const resumeOverlay   = document.getElementById('resumeModalOverlay');
+const resumeModal     = document.getElementById('resumeModal');
+const resumeCloseBtn  = document.getElementById('resumeModalClose');
+const resumeForm      = document.getElementById('resumeModalForm');
+const resumeSubmitBtn = document.getElementById('resumeSubmitBtn');
+const resumeNoteEl    = document.getElementById('resumeModalNote');
+const resumeEmailEl   = document.getElementById('resumeEmail');
+
+function renderResumeCount(n) {
+  if (resumeCounterEl) resumeCounterEl.textContent = n != null ? `${n} downloads` : '';
+}
+
+async function fetchResumeCount(bump) {
+  try {
+    const action = bump ? 'hit' : 'get';
+    const res = await fetch(`https://abacus.jasoncameron.dev/${action}/${COUNTER_NAMESPACE}/${COUNTER_KEY}`);
+    if (!res.ok) throw new Error('counter request failed');
+    const data = await res.json();
+    return typeof data.value === 'number' ? COUNTER_BASE + data.value : null;
+  } catch {
+    return null;
+  }
+}
+
+if (resumeBtn) {
+  fetchResumeCount(false).then(n => renderResumeCount(n != null ? n : COUNTER_BASE));
+
+  const openResumeModal = () => {
+    resumeOverlay.classList.add('open');
+    resumeModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    resumeNoteEl.textContent = '';
+    setTimeout(() => resumeEmailEl?.focus(), 50);
+  };
+  const closeResumeModal = () => {
+    resumeOverlay.classList.remove('open');
+    resumeModal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  resumeBtn.addEventListener('click', openResumeModal);
+  resumeCloseBtn.addEventListener('click', closeResumeModal);
+  resumeOverlay.addEventListener('click', closeResumeModal);
+
+  async function fetchResumeBlob(url) {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('fetch failed');
+    const blob = await res.blob();
+    if (!blob || blob.size === 0) throw new Error('empty file');
+    return blob;
+  }
+
+  async function triggerResumeDownload() {
+    let blob, filename;
+    try {
+      blob = await fetchResumeBlob(RESUME_PRIMARY);
+      filename = 'Shreyas_Bhakta_Resume.pdf';
+    } catch {
+      blob = await fetchResumeBlob(RESUME_FALLBACK);
+      filename = 'Shreyas_Bhakta_SE.pdf';
+    }
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 4000);
+  }
+
+  resumeForm.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    resumeNoteEl.textContent = '';
+    resumeNoteEl.classList.remove('error', 'warn');
+
+    // Honeypot — real visitors never fill this in; bots that scrape+submit the raw form often do.
+    if (resumeForm.elements['_gotcha']?.value) return;
+
+    const check = validateResumeEmail(resumeEmailEl.value);
+    if (!check.ok) {
+      resumeNoteEl.textContent = check.message;
+      resumeNoteEl.classList.add('error');
+      return;
+    }
+    const email = check.email;
+    if (check.flagged) {
+      resumeNoteEl.textContent = check.message;
+      resumeNoteEl.classList.add('warn');
+    }
+
+    resumeSubmitBtn.disabled = true;
+    resumeSubmitBtn.textContent = 'Sending...';
+
+    try {
+      await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          flagged_possible_typo: !!check.flagged,
+          message: "Every connection starts with sharing — thanks for sharing your email. Hope this is the start of something great!",
+          source: 'shreyasbhakta.dev resume download'
+        })
+      });
+    } catch {
+      // Don't block the download if the email log fails
+    }
+
+    try {
+      await triggerResumeDownload();
+      const n = await fetchResumeCount(true);
+      renderResumeCount(n);
+      if (!check.flagged) resumeNoteEl.textContent = 'Thanks! Your download should start automatically.';
+      setTimeout(closeResumeModal, 1800);
+    } catch {
+      resumeNoteEl.textContent = 'Something went wrong — please email me directly at shreyasbhakta@gmail.com.';
+      resumeNoteEl.classList.add('error');
+    } finally {
+      resumeSubmitBtn.disabled = false;
+      resumeSubmitBtn.textContent = 'Send Resume My Way';
+    }
+  });
+}
+
+/* ============================================================
    CUSTOM CURSOR
 ============================================================ */
 const cursor     = document.getElementById('cursor');
