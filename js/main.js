@@ -322,13 +322,9 @@ if (carouselStage) {
     if (state === 'left')  { prev(); return; }
     if (state === 'right') { next(); return; }
     if (state === 'center') {
-      const url = card.dataset.url;
-      if (!url) return;
       card.classList.add('flash');
-      setTimeout(() => {
-        card.classList.remove('flash');
-        window.open(url, '_blank', 'noopener,noreferrer');
-      }, 240);
+      setTimeout(() => card.classList.remove('flash'), 240);
+      openProjectModal(card);
     }
   });
 
@@ -342,6 +338,131 @@ if (carouselStage) {
 
   setStates();
 }
+
+/* ============================================================
+   PROJECT DETAIL MODAL (image slider)
+============================================================ */
+// Includes uppercase variants — GitHub Pages serves from a case-sensitive filesystem,
+// unlike macOS locally, so "1.JPG" on disk won't match a request for "1.jpg" in production.
+const PROJECT_IMAGE_EXTENSIONS = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'webp', 'WEBP'];
+const PROJECT_IMAGE_MAX_PROBE  = 20;
+const projectImageCache = new Map();
+
+function loadImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload  = () => resolve(src);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+async function findProjectImage(slug, n) {
+  for (const ext of PROJECT_IMAGE_EXTENSIONS) {
+    const src = `assets/projects/${slug}/${n}.${ext}`;
+    if (await loadImage(src)) return src;
+  }
+  return null;
+}
+
+async function getProjectImages(slug) {
+  if (projectImageCache.has(slug)) return projectImageCache.get(slug);
+  const found = [];
+  for (let n = 1; n <= PROJECT_IMAGE_MAX_PROBE; n++) {
+    const src = await findProjectImage(slug, n);
+    if (!src) break;
+    found.push(src);
+  }
+  projectImageCache.set(slug, found);
+  return found;
+}
+
+const projectModal        = document.getElementById('projectModal');
+const projectModalOverlay = document.getElementById('projectModalOverlay');
+const projectModalClose   = document.getElementById('projectModalClose');
+const projectModalTitle   = document.getElementById('projectModalTitle');
+const projectModalGithub  = document.getElementById('projectModalGithub');
+const projectSlider       = document.getElementById('projectSlider');
+const sliderTrack         = document.getElementById('sliderTrack');
+const sliderDots          = document.getElementById('sliderDots');
+const sliderPrev          = document.getElementById('sliderPrev');
+const sliderNext          = document.getElementById('sliderNext');
+
+let sliderImages = [];
+let sliderIndex  = 0;
+
+function renderSlide() {
+  sliderTrack.style.transform = `translateX(-${sliderIndex * 100}%)`;
+  [...sliderDots.children].forEach((dot, i) => dot.classList.toggle('active', i === sliderIndex));
+}
+
+function slideTo(i) {
+  sliderIndex = (i + sliderImages.length) % sliderImages.length;
+  renderSlide();
+}
+
+function closeProjectModal() {
+  projectModal?.classList.remove('open');
+  projectModalOverlay?.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+let projectModalRequestId = 0;
+
+async function openProjectModal(card) {
+  if (!projectModal) return;
+  const requestId = ++projectModalRequestId;
+  const slug  = card.dataset.slug;
+  const url   = card.dataset.url;
+  const title = card.querySelector('.proj-title')?.textContent || '';
+
+  projectModalTitle.textContent = title;
+  projectModalGithub.href = url || '#';
+
+  sliderTrack.innerHTML = '';
+  sliderDots.innerHTML  = '';
+  sliderImages = [];
+  sliderIndex  = 0;
+  projectSlider.classList.remove('has-images', 'single-image');
+
+  projectModalOverlay.classList.add('open');
+  projectModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const images = slug ? await getProjectImages(slug) : [];
+  // A newer open (or a fast card-to-card click) may have started while this was probing — don't clobber it.
+  if (requestId !== projectModalRequestId) return;
+  sliderImages = images;
+  if (images.length) {
+    projectSlider.classList.add('has-images');
+    if (images.length === 1) projectSlider.classList.add('single-image');
+    images.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `${title} screenshot ${i + 1}`;
+      sliderTrack.appendChild(img);
+
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'slider-dot';
+      dot.setAttribute('aria-label', `Go to image ${i + 1}`);
+      dot.addEventListener('click', () => slideTo(i));
+      sliderDots.appendChild(dot);
+    });
+    renderSlide();
+  }
+}
+
+projectModalClose?.addEventListener('click', closeProjectModal);
+projectModalOverlay?.addEventListener('click', closeProjectModal);
+sliderPrev?.addEventListener('click', () => slideTo(sliderIndex - 1));
+sliderNext?.addEventListener('click', () => slideTo(sliderIndex + 1));
+document.addEventListener('keydown', e => {
+  if (!projectModal?.classList.contains('open')) return;
+  if (e.key === 'Escape') closeProjectModal();
+  if (e.key === 'ArrowLeft' && sliderImages.length > 1) slideTo(sliderIndex - 1);
+  if (e.key === 'ArrowRight' && sliderImages.length > 1) slideTo(sliderIndex + 1);
+});
 
 /* ============================================================
    EXPERIENCE TIMELINE — click to expand / collapse
