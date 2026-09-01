@@ -351,7 +351,7 @@ const projectImageCache = new Map();
 function loadImage(src) {
   return new Promise(resolve => {
     const img = new Image();
-    img.onload  = () => resolve(src);
+    img.onload  = () => resolve({ src, ratio: img.naturalHeight / img.naturalWidth });
     img.onerror = () => resolve(null);
     img.src = src;
   });
@@ -359,8 +359,8 @@ function loadImage(src) {
 
 async function findProjectImage(slug, n) {
   for (const ext of PROJECT_IMAGE_EXTENSIONS) {
-    const src = `assets/projects/${slug}/${n}.${ext}`;
-    if (await loadImage(src)) return src;
+    const found = await loadImage(`assets/projects/${slug}/${n}.${ext}`);
+    if (found) return found;
   }
   return null;
 }
@@ -369,13 +369,17 @@ async function getProjectImages(slug) {
   if (projectImageCache.has(slug)) return projectImageCache.get(slug);
   const found = [];
   for (let n = 1; n <= PROJECT_IMAGE_MAX_PROBE; n++) {
-    const src = await findProjectImage(slug, n);
-    if (!src) break;
-    found.push(src);
+    const img = await findProjectImage(slug, n);
+    if (!img) break;
+    found.push(img);
   }
   projectImageCache.set(slug, found);
   return found;
 }
+
+const SLIDER_MIN_HEIGHT = 220;
+const SLIDER_MAX_HEIGHT = 560;
+const SLIDER_MAX_VH     = 0.6;
 
 const projectModal        = document.getElementById('projectModal');
 const projectModalOverlay = document.getElementById('projectModalOverlay');
@@ -383,17 +387,28 @@ const projectModalClose   = document.getElementById('projectModalClose');
 const projectModalTitle   = document.getElementById('projectModalTitle');
 const projectModalGithub  = document.getElementById('projectModalGithub');
 const projectSlider       = document.getElementById('projectSlider');
+const sliderTrackWrap     = document.getElementById('sliderTrackWrap');
 const sliderTrack         = document.getElementById('sliderTrack');
 const sliderDots          = document.getElementById('sliderDots');
 const sliderPrev          = document.getElementById('sliderPrev');
 const sliderNext          = document.getElementById('sliderNext');
 
-let sliderImages = [];
+let sliderImages = []; // [{ src, ratio }]
 let sliderIndex  = 0;
+
+function applySlideHeight() {
+  if (!sliderImages.length) { sliderTrackWrap.style.height = ''; return; }
+  const ratio = sliderImages[sliderIndex].ratio;
+  const width = sliderTrackWrap.getBoundingClientRect().width;
+  const maxHeight = Math.min(SLIDER_MAX_HEIGHT, window.innerHeight * SLIDER_MAX_VH);
+  const height = Math.min(maxHeight, Math.max(SLIDER_MIN_HEIGHT, width * ratio));
+  sliderTrackWrap.style.height = `${height}px`;
+}
 
 function renderSlide() {
   sliderTrack.style.transform = `translateX(-${sliderIndex * 100}%)`;
   [...sliderDots.children].forEach((dot, i) => dot.classList.toggle('active', i === sliderIndex));
+  applySlideHeight();
 }
 
 function slideTo(i) {
@@ -436,9 +451,9 @@ async function openProjectModal(card) {
   if (images.length) {
     projectSlider.classList.add('has-images');
     if (images.length === 1) projectSlider.classList.add('single-image');
-    images.forEach((src, i) => {
+    images.forEach((image, i) => {
       const img = document.createElement('img');
-      img.src = src;
+      img.src = image.src;
       img.alt = `${title} screenshot ${i + 1}`;
       sliderTrack.appendChild(img);
 
@@ -457,6 +472,9 @@ projectModalClose?.addEventListener('click', closeProjectModal);
 projectModalOverlay?.addEventListener('click', closeProjectModal);
 sliderPrev?.addEventListener('click', () => slideTo(sliderIndex - 1));
 sliderNext?.addEventListener('click', () => slideTo(sliderIndex + 1));
+window.addEventListener('resize', () => {
+  if (projectModal?.classList.contains('open')) applySlideHeight();
+}, { passive: true });
 document.addEventListener('keydown', e => {
   if (!projectModal?.classList.contains('open')) return;
   if (e.key === 'Escape') closeProjectModal();
